@@ -148,6 +148,4 @@ out = block(x, training=True)
 print(out.shape)  # (4, 10, 64)
 ```
 
----
 
-**Feel free to copy this entire section to your GitHub README! If you need more advanced usage (stacking, model integration, etc.), just ask.**
