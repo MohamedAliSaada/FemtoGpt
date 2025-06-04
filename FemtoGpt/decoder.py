@@ -9,7 +9,7 @@ Original file is located at
 
 import tensorflow as tf
 
-class ETransformer(tf.keras.layers.Layer):
+class DTransformer(tf.keras.layers.Layer):
     """Encoder block: Pre-Norm MHA + FFN with residuals."""
 
     def __init__(
