@@ -54,7 +54,7 @@ The `DTransformer` layer implements a single encoder block consisting of:
 
 ```python
 import tensorflow as tf
-from your_module import DTransformer  # Update import as needed
+from FemtoGpt import DTransformer  # Update import as needed
 
 # Example: Create dummy input
 batch_size = 2
