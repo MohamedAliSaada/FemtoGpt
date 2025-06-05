@@ -7,6 +7,6 @@ setup(
     author="Mohamed Saada",
     packages=find_packages(),  # This will find FemtoGpt/ package
     install_requires=[
-        "tensorflow>=2.11",
+        "tensorflow>=2.11",'sentencepiece'
     ],
 )
