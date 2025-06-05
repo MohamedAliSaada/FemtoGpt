@@ -1,0 +1,2 @@
+include FemtoGpt/AR6000SPT.model
+include FemtoGpt/AR6000SPT.vocab
