@@ -54,7 +54,7 @@ No external dependencies except Python 3.x (requires only the standard library).
 ### 1. Training a Tokenizer
 
 ```python
-from tokenizer import SaadaBPE  # Adjust import path as needed
+from FemtoGpt import SaadaBPE  # Adjust import path as needed
 
 bpe = SaadaBPE(space_symbol="▁", keep_diacritics=False)
 bpe.read_text("train_corpus.txt")         # Load training text
