@@ -25,6 +25,7 @@ class Trainer:
                 self.optimizer.apply_gradients(zip(grads, self.model.trainable_variables))
 
                 predictions = tf.argmax(logits, axis=-1)
+                y_batch = tf.cast(y_batch, tf.int64)
                 mask = tf.cast(tf.not_equal(y_batch, 0), dtype=tf.float32)
                 correct = tf.cast(tf.equal(predictions, y_batch), dtype=tf.float32)
                 accuracy = tf.reduce_sum(correct * mask) / tf.reduce_sum(mask)
