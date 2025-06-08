@@ -28,8 +28,14 @@ class FemtoGPT(tf.keras.Model):
         self.output_head = OutputHead(femto_config['vocab_size'])
 
     def call(self, ids, training=None, mask=None):
+        #masking phase 
+        seq_len = tf.shape(ids)[1]  #B-S-E
+        causal_mask = tf.linalg.band_part(tf.ones((seq_len, seq_len)), -1, 0)
+        causal_mask = causal_mask[tf.newaxis, tf.newaxis, :, :]
+
+
         x = self.embedding(ids, training=training)
         for layer in self.transformers:
-            x = layer(x, mask=mask, training=training)
+            x = layer(x, mask=causal_mask, training=training)
         logits = self.output_head(x)
         return logits
