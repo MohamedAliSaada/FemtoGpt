@@ -5,3 +5,4 @@ from .embedding import InputEmbedding
 from .outputhead import OutputHead
 from .femtogpt  import FemtoGPT
 from .generate_argmax import generate_argmax
+from .Trainer import Trainer
