@@ -29,13 +29,22 @@ class FemtoGPT(tf.keras.Model):
 
     def call(self, ids, training=None, mask=None):
         #masking phase 
+
+        #1-causal mask
         seq_len = tf.shape(ids)[1]  #B-S-E
         causal_mask = tf.linalg.band_part(tf.ones((seq_len, seq_len)), -1, 0)
         causal_mask = causal_mask[tf.newaxis, tf.newaxis, :, :]
 
+        #2-padding mask
+        padding_mask = tf.cast(tf.math.not_equal(ids, 0), dtype=tf.float32)
+        padding_mask = padding_mask[:, tf.newaxis, tf.newaxis, :]
+
+        #my mask now 
+        final_mask = padding_mask * causal_mask
+        
 
         x = self.embedding(ids, training=training)
         for layer in self.transformers:
-            x = layer(x, mask=causal_mask, training=training)
+            x = layer(x, mask=final_mask, training=training)
         logits = self.output_head(x)
         return logits
